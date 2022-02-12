@@ -1,3 +1,7 @@
-altair
+pydeck
 pandas
 streamlit
+shapely
+fiona
+geopandas
+pygeos
