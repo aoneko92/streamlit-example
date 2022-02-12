@@ -17,7 +17,7 @@ import plotly.express as px
 import matplotlib.pyplot as plt
 
 
-shp = gpd.read_file("Japan_map/jpn_admbnda_adm1_2019.shp")
+shp = gpd.read_file("jpn_admbnda_adm1_2019.shp")
 shp["pref"] = shp["ADM1_PCODE"].replace("JP", "", regex=True)
 shp['pref']=shp['pref'].astype(int)
 
