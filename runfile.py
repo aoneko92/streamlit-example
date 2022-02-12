@@ -15,11 +15,13 @@ import geopandas as gpd
 import plotly.express as px
 
 
+
 shp = gpd.read_file("jpn_admbnda_adm1_2019.shp")
 shp["pref"] = shp["ADM1_PCODE"].replace("JP", "", regex=True)
 shp['pref']=shp['pref'].astype(int)
 
-f_list = ["PrefDep.csv", "PrefLon.csv", "PrefRMch.csv", "PrefRMme.csv", "PrefWell.csv"]
+f_list = ["PrefDep.csv", "PrefLon.csv", "PrefRMch.csv", "PrefRMme.csv", "PrefWell.csv",
+          "suiciderate_full_2020.csv", "suiciderate_male_2020.csv", "suiciderate_female_2020.csv"]
 
 for i in range(0, len(f_list)): 
     data = pd.read_csv(f_list[i])
@@ -33,7 +35,9 @@ shp.index = shp["ADM1_EN"]
 
 st.write("Mental health in Japan by relational mobility status")
 
-mh = st.selectbox("Type of mental health", ("Depression", "Loneliness", "Well-being", "RM_Choosing", "RM_Meeting"))
+mh = st.selectbox("Type of mental health", ("Depression", "Loneliness", "Well-being", "RM_Choosing", "RM_Meeting",
+                                            "Suicide rate 2020", "Suicide rate 2020 - Males", 
+                                            "Suicide rate 2020 - Females"))
 
 if mh == "Depression": 
     t = "depression"
@@ -45,7 +49,13 @@ elif mh == "RM_Choosing":
     t = "choosingRM"
 elif mh == "RM_Meeting":
     t = "meetingRM"
-
+elif mh == "Suicide rate 2020":
+    t = "suicide_rate_2020"    
+elif mh == "Suicide rate 2020 - Males":
+    t = "suicide_rate_male_2020"
+elif mh == "Suicide rate 2020 - Females":
+    t = "suicide_rate_female_2020" 
+    
 fig = px.choropleth_mapbox(
     shp,
     geojson=shp.geometry,
