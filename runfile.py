@@ -13,7 +13,7 @@ import pandas as pd
 import streamlit as st
 import geopandas as gpd
 import plotly.express as px
-
+from scipy.stats import pearsonr
 
 ###Create mapfile for prefecture level results
 shp = gpd.read_file("jpn_admbnda_adm1_2019.shp")
@@ -42,6 +42,8 @@ shp_1["pref"] = shp_1["ADM1_PCODE"].replace("JP", "", regex=True)
 shp_1['pref']=shp_1['pref'].astype(int)
 
 reg_data = pd.read_csv("region_RM_RNFeb14.csv")
+rd_orig = pd.read_csv("region_RM_RNFeb14.csv")
+
 regions = pd.read_excel("regionsRN.xlsx")[["ken", "RegionA"]]
 
 reg_data = pd.merge(regions, reg_data, on = "RegionA")
@@ -51,7 +53,7 @@ shp_1 = pd.merge(shp_1, reg_data, on = ["pref"])
 shp_1 = gpd.GeoDataFrame(shp_1)
 shp_1.index = shp_1["ADM1_EN"]
 
-
+      
 st.write("Mental health in Japan by relational mobility status")
 
 col3, col4 = st.columns(2)
@@ -131,7 +133,6 @@ if mh_0 == "Prefecture":
         elif mh_1 == "Suicide rate 2020 - Females":
             t_1 = "suicide_rate_female_2020" 
     
-    
 
         fig_2 = px.choropleth_mapbox(
             shp,
@@ -146,6 +147,9 @@ if mh_0 == "Prefecture":
             height = 500,
             width = 450
             )
+        #calculate pearsons correlation
+        mes = 'Pearsons correlation: ' + str(shp[t].corr(shp[t_1]))
+
 ##for regions
 if mh_0 == "Region":
     ##functions for plot 1
@@ -214,11 +218,15 @@ if mh_0 == "Region":
             height = 500,
             width = 450
             )
+        #calculate pearsons correlation
+        mes = 'Pearsons correlation: ' + str(rd_orig[t].corr(rd_orig[t_1]))
+
 
 if sb_type == "Single plot":
     st.plotly_chart(fig_1, use_container_width=True)
 
 if sb_type == "Compare 2 plots":
+    st.write(mes)
     col1, col2 = st.columns(2)
     with col1:
         st.plotly_chart(fig_1, use_container_width=True)
