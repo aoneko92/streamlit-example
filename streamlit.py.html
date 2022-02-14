@@ -1,0 +1,43 @@
+# -*- coding: utf-8 -*-
+"""
+Spyder Editor
+
+This is a temporary script file.
+"""
+import os
+os.environ['PROJ_LIB'] = 'C:\\Users\\robba\\anaconda3\\envs\\sai\\Library\\share\\proj'
+os.environ['GDAL_DATA'] = 'C:\\Users\\robba\\anaconda3\\envs\sai\\Library\\share'
+
+import pandas as pd
+import streamlit as st
+import geopandas as gpd
+import altair as alt
+
+import matplotlib.pyplot as plt
+
+
+shp = gpd.read_file("Japan_map/jpn_admbnda_adm1_2019.shp")
+shp["pref"] = shp["ADM1_PCODE"].replace("JP", "", regex=True)
+shp['pref']=shp['pref'].astype(int)
+
+f_list = ["PrefDep.csv", "PrefLon.csv", "PrefRMch.csv", "PrefRMme.csv", "PrefWell.csv"]
+
+for i in range(0, len(f_list)): 
+    data = pd.read_csv(f_list[i])
+    data['pref']=data['pref'].astype(int)
+
+    shp = pd.merge(shp, data, on = ["pref"])
+
+shp = gpd.GeoDataFrame(shp)
+
+shp.columns
+shp.plot(column='depression');
+
+inline_data = alt.InlineData(shp.to_json())
+chart = alt.Chart(inline_data).mark_geoshape()
+st.altair_chart(chart)
+
+shape.columns
+print(shape)
+shape.plot();
+
