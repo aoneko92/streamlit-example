@@ -54,15 +54,25 @@ shp_1.index = shp_1["ADM1_EN"]
 
 st.write("Mental health in Japan by relational mobility status")
 
-mh_0 = st.selectbox("Choose area type", ("Prefecture", "Region"))
+col3, col4 = st.columns(2)
 
-col1, col2 = st.columns(2)
-with col1:
+with col3:     
+    sb_type = st.selectbox("Analysis type",("Single plot", "Compare 2 plots"))
+with col4:
+    mh_0 = st.selectbox("Choose area type", ("Prefecture", "Region"))
+
+if sb_type == "Single plot":
     mh = st.selectbox("Type of mental health - Figure 1", ("Depression", "Loneliness", "Well-being", "RM_Choosing", "RM_Meeting",
+                                        "Suicide rate 2020", "Suicide rate 2020 - Males", 
+                                        "Suicide rate 2020 - Females"), key = 0)
+elif sb_type == "Compare 2 plots":
+    col1, col2 = st.columns(2)
+    with col1:
+        mh = st.selectbox("Type of mental health - Figure 1", ("Depression", "Loneliness", "Well-being", "RM_Choosing", "RM_Meeting",
                                             "Suicide rate 2020", "Suicide rate 2020 - Males", 
                                             "Suicide rate 2020 - Females"), key = 0)
-with col2:
-    mh_1 = st.selectbox("Type of mental health - Figure 2", ("Depression", "Loneliness", "Well-being", "RM_Choosing", "RM_Meeting",
+    with col2:
+        mh_1 = st.selectbox("Type of mental health - Figure 2", ("Depression", "Loneliness", "Well-being", "RM_Choosing", "RM_Meeting",
                                             "Suicide rate 2020", "Suicide rate 2020 - Males", 
                                             "Suicide rate 2020 - Females"), key = 1)
 
@@ -88,26 +98,6 @@ if mh_0 == "Prefecture":
         t = "suicide_rate_male_2020"
     elif mh == "Suicide rate 2020 - Females":
         t = "suicide_rate_female_2020" 
-    
-    ##functions for plot 2
-    if mh_1 == "Depression": 
-        t_1 = "depression"
-    elif mh_1 == "Loneliness":
-        t_1 = "loneliness"
-    elif mh_1 == "Well-being": 
-        t_1 = "wellbeing"
-    elif mh_1 == "RM_Choosing":
-        t_1 = "choosingRM"
-    elif mh_1 == "RM_Meeting":
-        t_1 = "meetingRM"
-    elif mh_1 == "Suicide rate 2020":
-        t_1 = "suicide_rate_2020"    
-    elif mh_1 == "Suicide rate 2020 - Males":
-        t_1 = "suicide_rate_male_2020"
-    elif mh_1 == "Suicide rate 2020 - Females":
-        t_1 = "suicide_rate_female_2020" 
-    
-    
     fig_1 = px.choropleth_mapbox(
         shp,
         geojson=shp.geometry,
@@ -121,19 +111,41 @@ if mh_0 == "Prefecture":
         height = 500,
         width = 450
         )
-    fig_2 = px.choropleth_mapbox(
-        shp,
-        geojson=shp.geometry,
-        locations="ADM1_EN",
-        color=t_1,
-        hover_name = "RegionA",
-        center=dict(lat=35.24, lon=139.32),
-        mapbox_style="open-street-map",
-        zoom=3,
-        title = "Figure 2 - " + mh_1,
-        height = 500,
-        width = 450
-        )
+    
+    if sb_type == "Compare 2 plots":
+        ##functions for plot 2
+        if mh_1 == "Depression": 
+            t_1 = "depression"
+        elif mh_1 == "Loneliness":
+            t_1 = "loneliness"
+        elif mh_1 == "Well-being": 
+            t_1 = "wellbeing"
+        elif mh_1 == "RM_Choosing":
+            t_1 = "choosingRM"
+        elif mh_1 == "RM_Meeting":
+            t_1 = "meetingRM"
+        elif mh_1 == "Suicide rate 2020":
+            t_1 = "suicide_rate_2020"    
+        elif mh_1 == "Suicide rate 2020 - Males":
+            t_1 = "suicide_rate_male_2020"
+        elif mh_1 == "Suicide rate 2020 - Females":
+            t_1 = "suicide_rate_female_2020" 
+    
+    
+
+        fig_2 = px.choropleth_mapbox(
+            shp,
+            geojson=shp.geometry,
+            locations="ADM1_EN",
+            color=t_1,
+            hover_name = "RegionA",
+            center=dict(lat=35.24, lon=139.32),
+            mapbox_style="open-street-map",
+            zoom=3,
+            title = "Figure 2 - " + mh_1,
+            height = 500,
+            width = 450
+            )
 ##for regions
 if mh_0 == "Region":
     ##functions for plot 1
@@ -154,25 +166,6 @@ if mh_0 == "Region":
     elif mh == "Suicide rate 2020 - Females":
         t = "suicide_rate_reg_female" 
     
-    ##functions for plot 2
-    if mh_1 == "Depression": 
-        t_1 = "dep0"
-    elif mh_1 == "Loneliness":
-        t_1 = "loneliness"
-    elif mh_1 == "Well-being": 
-        t_1 = "well"
-    elif mh_1 == "RM_Choosing":
-        t_1 = "chRM"
-    elif mh_1 == "RM_Meeting":
-        t_1 = "mtRM"
-    elif mh_1 == "Suicide rate 2020":
-        t_1 = "suicide_rate_reg_tot"    
-    elif mh_1 == "Suicide rate 2020 - Males":
-        t_1 = "suicide_rate_reg_male"
-    elif mh_1 == "Suicide rate 2020 - Females":
-        t_1 = "suicide_rate_reg_female" 
-    
-    
     fig_1 = px.choropleth_mapbox(
         shp_1,
         geojson=shp.geometry,
@@ -186,23 +179,49 @@ if mh_0 == "Region":
         height = 500,
         width = 450
         )
-    fig_2 = px.choropleth_mapbox(
-        shp_1,
-        geojson=shp.geometry,
-        locations="ADM1_EN",
-        color=t_1,
-        hover_name = "RegionA",
-        center=dict(lat=35.24, lon=139.32),
-        mapbox_style="open-street-map",
-        zoom=3,
-        title = "Figure 2 - " + mh_1,
-        height = 500,
-        width = 450
-        )
+    if sb_type == "Compare 2 plots":
 
-col1, col2 = st.columns(2)
-with col1:
+        ##functions for plot 2
+        if mh_1 == "Depression": 
+            t_1 = "dep0"
+        elif mh_1 == "Loneliness":
+            t_1 = "loneliness"
+        elif mh_1 == "Well-being": 
+            t_1 = "well"
+        elif mh_1 == "RM_Choosing":
+            t_1 = "chRM"
+        elif mh_1 == "RM_Meeting":
+            t_1 = "mtRM"
+        elif mh_1 == "Suicide rate 2020":
+            t_1 = "suicide_rate_reg_tot"    
+        elif mh_1 == "Suicide rate 2020 - Males":
+            t_1 = "suicide_rate_reg_male"
+        elif mh_1 == "Suicide rate 2020 - Females":
+            t_1 = "suicide_rate_reg_female" 
+            
+    
+
+        fig_2 = px.choropleth_mapbox(
+            shp_1,
+            geojson=shp.geometry,
+            locations="ADM1_EN",
+            color=t_1,
+            hover_name = "RegionA",
+            center=dict(lat=35.24, lon=139.32),
+            mapbox_style="open-street-map",
+            zoom=3,
+            title = "Figure 2 - " + mh_1,
+            height = 500,
+            width = 450
+            )
+
+if sb_type == "Single plot":
     st.plotly_chart(fig_1, use_container_width=True)
-with col2:
-    st.plotly_chart(fig_2, use_container_width=True)
+
+if sb_type == "Compare 2 plots":
+    col1, col2 = st.columns(2)
+    with col1:
+        st.plotly_chart(fig_1, use_container_width=True)
+    with col2:
+        st.plotly_chart(fig_2, use_container_width=True)
 
