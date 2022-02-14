@@ -63,20 +63,49 @@ with col4:
     mh_0 = st.selectbox("Choose area type", ("Prefecture", "Region"))
 
 if sb_type == "Single plot":
-    mh = st.selectbox("Type of mental health - Figure 1", ("Depression", "Loneliness", "Well-being", "RM_Choosing", "RM_Meeting",
-                                        "Suicide rate 2020", "Suicide rate 2020 - Males", 
-                                        "Suicide rate 2020 - Females"), key = 0)
-elif sb_type == "Compare 2 plots":
-    col1, col2 = st.columns(2)
-    with col1:
+    if mh_0 == "Prefecture":
         mh = st.selectbox("Type of mental health - Figure 1", ("Depression", "Loneliness", "Well-being", "RM_Choosing", "RM_Meeting",
-                                            "Suicide rate 2020", "Suicide rate 2020 - Males", 
-                                            "Suicide rate 2020 - Females"), key = 0)
-    with col2:
-        mh_1 = st.selectbox("Type of mental health - Figure 2", ("Depression", "Loneliness", "Well-being", "RM_Choosing", "RM_Meeting",
-                                            "Suicide rate 2020", "Suicide rate 2020 - Males", 
-                                            "Suicide rate 2020 - Females"), key = 1)
+                                                               "Suicide rate 2020", "Suicide rate 2020 - Males", 
+                                                               "Suicide rate 2020 - Females"), key = 0)
+    elif mh_0 == "Region": 
+        mh = st.selectbox("Type of mental health - Figure 1", ("Depression", "Depression - Male", "Depression - Female", 
+                                                               "Loneliness", "Loneliness - Male", "Loneliness - Female",
+                                                               "Well-being", "Well-being - Male", "Well-being - Female",
+                                                               "RM_Choosing", "RM_Choosing - Male", "RM_Choosing - Female",
+                                                               "RM_Meeting", "RM_Meeting - Male", "RM_Choosing - Female",
+                                                               "Suicide rate 2020", "Suicide rate 2020 - Male", 
+                                                               "Suicide rate 2020 - Female"), key = 0)
 
+
+elif sb_type == "Compare 2 plots":
+    if mh_0 == "Prefecture":
+        col1, col2 = st.columns(2)
+        with col1:
+            mh = st.selectbox("Type of mental health - Figure 1", ("Depression", "Loneliness", "Well-being", "RM_Choosing", "RM_Meeting",
+                                                                   "Suicide rate 2020", "Suicide rate 2020 - Males", 
+                                                                   "Suicide rate 2020 - Females"), key = 0)
+        with col2:
+            mh_1 = st.selectbox("Type of mental health - Figure 2", ("Depression", "Loneliness", "Well-being", "RM_Choosing", "RM_Meeting",
+                                                                     "Suicide rate 2020", "Suicide rate 2020 - Males", 
+                                                                     "Suicide rate 2020 - Females"), key = 1)
+    elif mh_0 == "Region":
+        col1, col2 = st.columns(2)
+        with col1:
+            mh = st.selectbox("Type of mental health - Figure 1", ("Depression", "Depression - Male", "Depression - Female", 
+                                                                   "Loneliness", "Loneliness - Male", "Loneliness - Female",
+                                                                   "Well-being", "Well-being - Male", "Well-being - Female",
+                                                                   "RM_Choosing", "RM_Choosing - Male", "RM_Choosing - Female",
+                                                                   "RM_Meeting", "RM_Meeting - Male", "RM_Choosing - Female",
+                                                                   "Suicide rate 2020", "Suicide rate 2020 - Male", 
+                                                                   "Suicide rate 2020 - Female"), key = 0)
+        with col2:
+            mh_1 = st.selectbox("Type of mental health - Figure 2", ("Depression", "Depression - Male", "Depression - Female", 
+                                                                   "Loneliness", "Loneliness - Male", "Loneliness - Female",
+                                                                   "Well-being", "Well-being - Male", "Well-being - Female",
+                                                                   "RM_Choosing", "RM_Choosing - Male", "RM_Choosing - Female",
+                                                                   "RM_Meeting", "RM_Meeting - Male", "RM_Choosing - Female",
+                                                                   "Suicide rate 2020", "Suicide rate 2020 - Male", 
+                                                                   "Suicide rate 2020 - Female"), key = 1)
 
 
 ###Dropdown menus
@@ -154,19 +183,39 @@ if mh_0 == "Region":
     ##functions for plot 1
     if mh == "Depression": 
         t = "dep0"
+    elif mh == "Depression - Male":
+        t = "dep0M"
+    elif mh == "Depression - Female":
+        t = "dep0F"
     elif mh == "Loneliness":
         t = "loneliness"
+    elif mh == "Loneliness - Male":
+        t = "lonelinessM"
+    elif mh == "Loneliness - Female":
+        t = "lonelinessF"
     elif mh == "Well-being": 
         t = "well"
+    elif mh == "Well-being - Male":
+        t = "wellM"
+    elif mh == "Well-being - Female":
+        t = "wellF"
     elif mh == "RM_Choosing":
         t = "chRM"
+    elif mh == "RM_Choosing - Male":
+        t = "chRMM"
+    elif mh == "RM_Choosing - Female":
+        t = "chRMF"
     elif mh == "RM_Meeting":
         t = "mtRM"
+    elif mh == "RM_Meeting - Male":
+        t = "mtRMM"
+    elif mh == "RM_Meeting - Female":
+        t = "mtRMF"
     elif mh == "Suicide rate 2020":
         t = "suicide_rate_reg_tot"    
-    elif mh == "Suicide rate 2020 - Males":
+    elif mh == "Suicide rate 2020 - Male":
         t = "suicide_rate_reg_male"
-    elif mh == "Suicide rate 2020 - Females":
+    elif mh == "Suicide rate 2020 - Female":
         t = "suicide_rate_reg_female" 
     
     fig_1 = px.choropleth_mapbox(
@@ -185,22 +234,43 @@ if mh_0 == "Region":
     if sb_type == "Compare 2 plots":
 
         ##functions for plot 2
-        if mh_1 == "Depression": 
-            t_1 = "dep0"
-        elif mh_1 == "Loneliness":
-            t_1 = "loneliness"
-        elif mh_1 == "Well-being": 
-            t_1 = "well"
-        elif mh_1 == "RM_Choosing":
-            t_1 = "chRM"
-        elif mh_1 == "RM_Meeting":
-            t_1 = "mtRM"
-        elif mh_1 == "Suicide rate 2020":
-            t_1 = "suicide_rate_reg_tot"    
-        elif mh_1 == "Suicide rate 2020 - Males":
-            t_1 = "suicide_rate_reg_male"
-        elif mh_1 == "Suicide rate 2020 - Females":
-            t_1 = "suicide_rate_reg_female" 
+        ##functions for plot 1
+        if mh == "Depression": 
+            t = "dep0"
+        elif mh == "Depression - Male":
+            t = "dep0M"
+        elif mh == "Depression - Female":
+            t = "dep0F"
+        elif mh == "Loneliness":
+            t = "loneliness"
+        elif mh == "Loneliness - Male":
+            t = "lonelinessM"
+        elif mh == "Loneliness - Female":
+            t = "lonelinessF"
+        elif mh == "Well-being": 
+            t = "well"
+        elif mh == "Well-being - Male":
+            t = "wellM"
+        elif mh == "Well-being - Female":
+            t = "wellF"
+        elif mh == "RM_Choosing":
+            t = "chRM"
+        elif mh == "RM_Choosing - Male":
+            t = "chRMM"
+        elif mh == "RM_Choosing - Female":
+            t = "chRMF"
+        elif mh == "RM_Meeting":
+            t = "mtRM"
+        elif mh == "RM_Meeting - Male":
+            t = "mtRMM"
+        elif mh == "RM_Meeting - Female":
+            t = "mtRMF"
+        elif mh == "Suicide rate 2020":
+            t = "suicide_rate_reg_tot"    
+        elif mh == "Suicide rate 2020 - Male":
+            t = "suicide_rate_reg_male"
+        elif mh == "Suicide rate 2020 - Female":
+            t = "suicide_rate_reg_female" 
             
     
 
