@@ -13,7 +13,6 @@ import pandas as pd
 import streamlit as st
 import geopandas as gpd
 import plotly.express as px
-from scipy.stats import pearsonr
 
 ###Create mapfile for prefecture level results
 shp = gpd.read_file("jpn_admbnda_adm1_2019.shp")
