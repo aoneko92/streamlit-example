@@ -234,42 +234,41 @@ if mh_0 == "Region":
     if sb_type == "Compare 2 plots":
 
         ##functions for plot 2
-        ##functions for plot 1
-        if mh == "Depression": 
+        if mh_1 == "Depression": 
             t_1 = "dep0"
-        elif mh == "Depression - Male":
+        elif mh_1 == "Depression - Male":
             t_1 = "dep0M"
-        elif mh == "Depression - Female":
+        elif mh_1 == "Depression - Female":
             t_1 = "dep0F"
-        elif mh == "Loneliness":
+        elif mh_1 == "Loneliness":
             t_1 = "loneliness"
-        elif mh == "Loneliness - Male":
+        elif mh_1 == "Loneliness - Male":
             t_1 = "lonelinessM"
-        elif mh == "Loneliness - Female":
+        elif mh_1 == "Loneliness - Female":
             t_1 = "lonelinessF"
-        elif mh == "Well-being": 
+        elif mh_1 == "Well-being": 
             t_1 = "well"
-        elif mh == "Well-being - Male":
+        elif mh_1 == "Well-being - Male":
             t_1 = "wellM"
-        elif mh == "Well-being - Female":
+        elif mh_1 == "Well-being - Female":
             t_1 = "wellF"
-        elif mh == "RM_Choosing":
+        elif mh_1 == "RM_Choosing":
             t_1 = "chRM"
-        elif mh == "RM_Choosing - Male":
+        elif mh_1 == "RM_Choosing - Male":
             t_1 = "chRMM"
-        elif mh == "RM_Choosing - Female":
+        elif mh_1 == "RM_Choosing - Female":
             t_1 = "chRMF"
-        elif mh == "RM_Meeting":
+        elif mh_1 == "RM_Meeting":
             t_1 = "mtRM"
-        elif mh == "RM_Meeting - Male":
+        elif mh_1 == "RM_Meeting - Male":
             t_1 = "mtRMM"
-        elif mh == "RM_Meeting - Female":
+        elif mh_1 == "RM_Meeting - Female":
             t_1 = "mtRMF"
-        elif mh == "Suicide rate 2020":
+        elif mh_1 == "Suicide rate 2020":
             t_1 = "suicide_rate_reg_tot"    
-        elif mh == "Suicide rate 2020 - Male":
+        elif mh_1 == "Suicide rate 2020 - Male":
             t_1 = "suicide_rate_reg_male"
-        elif mh == "Suicide rate 2020 - Female":
+        elif mh_1 == "Suicide rate 2020 - Female":
             t_1 = "suicide_rate_reg_female" 
             
     
