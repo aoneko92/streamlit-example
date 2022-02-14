@@ -148,7 +148,7 @@ if mh_0 == "Prefecture":
             width = 450
             )
         #calculate pearsons correlation
-        mes = 'Pearsons correlation: ' + str(shp[t].corr(shp[t_1]))
+        mes = 'Pearsons correlation: ' + str(shp[t].corr(shp[t_1]))[:6]
 
 ##for regions
 if mh_0 == "Region":
@@ -219,7 +219,7 @@ if mh_0 == "Region":
             width = 450
             )
         #calculate pearsons correlation
-        mes = 'Pearsons correlation: ' + str(rd_orig[t].corr(rd_orig[t_1]))
+        mes = 'Pearsons correlation: ' + str(rd_orig[t].corr(rd_orig[t_1]))[:6]
 
 
 if sb_type == "Single plot":
