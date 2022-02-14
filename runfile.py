@@ -236,41 +236,41 @@ if mh_0 == "Region":
         ##functions for plot 2
         ##functions for plot 1
         if mh == "Depression": 
-            t = "dep0"
+            t_1 = "dep0"
         elif mh == "Depression - Male":
-            t = "dep0M"
+            t_1 = "dep0M"
         elif mh == "Depression - Female":
-            t = "dep0F"
+            t_1 = "dep0F"
         elif mh == "Loneliness":
-            t = "loneliness"
+            t_1 = "loneliness"
         elif mh == "Loneliness - Male":
-            t = "lonelinessM"
+            t_1 = "lonelinessM"
         elif mh == "Loneliness - Female":
-            t = "lonelinessF"
+            t_1 = "lonelinessF"
         elif mh == "Well-being": 
-            t = "well"
+            t_1 = "well"
         elif mh == "Well-being - Male":
-            t = "wellM"
+            t_1 = "wellM"
         elif mh == "Well-being - Female":
-            t = "wellF"
+            t_1 = "wellF"
         elif mh == "RM_Choosing":
-            t = "chRM"
+            t_1 = "chRM"
         elif mh == "RM_Choosing - Male":
-            t = "chRMM"
+            t_1 = "chRMM"
         elif mh == "RM_Choosing - Female":
-            t = "chRMF"
+            t_1 = "chRMF"
         elif mh == "RM_Meeting":
-            t = "mtRM"
+            t_1 = "mtRM"
         elif mh == "RM_Meeting - Male":
-            t = "mtRMM"
+            t_1 = "mtRMM"
         elif mh == "RM_Meeting - Female":
-            t = "mtRMF"
+            t_1 = "mtRMF"
         elif mh == "Suicide rate 2020":
-            t = "suicide_rate_reg_tot"    
+            t_1 = "suicide_rate_reg_tot"    
         elif mh == "Suicide rate 2020 - Male":
-            t = "suicide_rate_reg_male"
+            t_1 = "suicide_rate_reg_male"
         elif mh == "Suicide rate 2020 - Female":
-            t = "suicide_rate_reg_female" 
+            t_1 = "suicide_rate_reg_female" 
             
     
 
