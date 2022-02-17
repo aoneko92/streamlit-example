@@ -213,7 +213,7 @@ if mh_0 == "Prefecture":
             rc_f1 = (3,7)
             label = "Avg. response on depression (0 - Not at all depressed, 30 - Extremely depreseed)"
         elif "Loneliness" in mh: 
-            rc_f1 = (11,15)
+            rc_f1 = (11,14)
             label = "Avg. response on Loneliness (0 - Not at all lonely, 30 - Extremely lonely)"
         elif "Well-being" in mh: 
             rc_f1 = (17,20.5)
@@ -293,7 +293,7 @@ if mh_0 == "Prefecture":
                 rc_f2 = (3,7)
                 label_1 = "Avg. response on depression (0 - Not at all depressed, 30 - Extremely depreseed)"
             elif "Loneliness" in mh_1: 
-                rc_f2 = (11,15)
+                rc_f2 = (11,14)
                 label_1 = "Avg. response on Loneliness (0 - Not at all lonely, 30 - Extremely lonely)"
 
             elif "Well-being" in mh_1: 
@@ -395,7 +395,7 @@ if mh_0 == "Region":
             rc_f1 = (3,7)
             label = "Avg. response on depression (0 - Not at all depressed, 30 - Extremely depreseed)"
         elif "Loneliness" in mh: 
-            rc_f1 = (11,15)
+            rc_f1 = (11,14)
             label = "Avg. response on Loneliness (0 - Not at all lonely, 30 - Extremely lonely)"
 
         elif "Well-being" in mh: 
@@ -499,7 +499,7 @@ if mh_0 == "Region":
                 rc_f2 = (3,7)
                 label_1 = "Avg. response on depression (0 - Not at all depressed, 30 - Extremely depreseed)"
             elif "Loneliness" in mh_1: 
-                rc_f2 = (11,15)
+                rc_f2 = (11,14)
                 label_1 = "Avg. response on Loneliness (0 - Not at all lonely, 30 - Extremely lonely)"
 
             elif "Well-being" in mh_1: 
