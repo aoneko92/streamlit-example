@@ -72,7 +72,7 @@ with col4:
 if sb_type == "Single plot":
     
     
-    var_type = st.selectbox("Choose variable type - Figure 1", ("Mean", "Percentage"), key = 9)
+    var_type = st.selectbox("Choose variable type - Figure 1", ("Percentage", "Mean"), key = 9)
 
     if mh_0 == "Prefecture":
         if var_type == "Mean":
@@ -108,9 +108,9 @@ elif sb_type == "Compare 2 plots":
         ##add variable typer
         col7, col8 = st.columns(2)
         with col7:
-            var_type = st.selectbox("Choose variable type - Figure 1", ("Mean", "Percentage"), key = 9)
+            var_type = st.selectbox("Choose variable type - Figure 1", ("Percentage", "Mean"), key = 9)
         with col8:
-            var_type_1 = st.selectbox("Choose variable type - Figure 2", ("Mean", "Percentage"), key = 10)
+            var_type_1 = st.selectbox("Choose variable type - Figure 2", ("Percentage", "Mean"), key = 10)
 
             
         col1, col2 = st.columns(2)
@@ -134,9 +134,9 @@ elif sb_type == "Compare 2 plots":
         ##add variable typer
         col7, col8 = st.columns(2)
         with col7:
-            var_type = st.selectbox("Choose variable type - Figure 1", ("Mean", "Percentage"), key = 9)
+            var_type = st.selectbox("Choose variable type - Figure 1", ("Percentage", "Mean"), key = 9)
         with col8:
-            var_type_1 = st.selectbox("Choose variable type - Figure 2", ("Mean", "Percentage"), key = 10)
+            var_type_1 = st.selectbox("Choose variable type - Figure 2", ("Percentage", "Mean"), key = 10)
 
         col1, col2 = st.columns(2)
         with col1:
@@ -229,9 +229,9 @@ if mh_0 == "Prefecture":
             label = "Suicide rate (per 100,000 population)"
 
         if "Male" in mh:
-            g_label = " [MALE]"
+            g_label = "\n" + " [MALE]"
         elif "Female" in mh:
-            g_label = " [FEMALE]"
+            g_label = "\n" + " [FEMALE]"
         else:
             g_label = ""
         
@@ -313,9 +313,9 @@ if mh_0 == "Prefecture":
                 label_1 = "Suicide rate (per 100,000 population)"
 
         if "Male" in mh_1:             
-            g_label_1 = " [MALE]"
+            g_label_1 = "\n" + " [MALE]"
         elif "Female" in mh_1:
-            g_label_1 = " [FEMALE]"
+            g_label_1 = "\n" + " [FEMALE]"
         else:
             g_label_1 = ""
     
@@ -415,9 +415,9 @@ if mh_0 == "Region":
             label = "Suicide rate (per 100,000 population)"
 
     if "Male" in mh:
-        g_label = " [MALE]"
+        g_label = "\n" + " [MALE]"
     elif "Female" in mh:
-        g_label = " [FEMALE]"
+        g_label = "\n" + " [FEMALE]"
     else:
         g_label = ""
     
@@ -519,9 +519,9 @@ if mh_0 == "Region":
                 label_1 = "Suicide rate (per 100,000 population)"
 
         if "Male" in mh_1:             
-            g_label_1 = " [MALE]"
+            g_label_1 = "\n" + " [MALE]"
         elif "Female" in mh_1:
-            g_label_1 = " [FEMALE]"
+            g_label_1 = "\n" + " [FEMALE]"
         else:
             g_label_1 = ""
 
