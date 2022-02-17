@@ -392,7 +392,7 @@ if mh_0 == "Region":
 
     else:    
         if "Depression" in mh: 
-            rc_f1 = (3,8)
+            rc_f1 = (3,7)
             label = "Avg. response on depression (0 - Not at all depressed, 30 - Extremely depreseed)"
         elif "Loneliness" in mh: 
             rc_f1 = (11,15)
